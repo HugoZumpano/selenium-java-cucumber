@@ -21,8 +21,8 @@ public class ActionsCommon {
 
     public void clickElement(By locator) throws IOException {
         validateElement(locator);
-        driver.findElement(locator).click();
         DriverManager.screenshotElement(locator);
+        driver.findElement(locator).click();
     }
 
     public void inputElement(By locator, String msg) throws IOException {

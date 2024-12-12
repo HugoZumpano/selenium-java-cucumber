@@ -8,7 +8,6 @@ import resources.pages.URLs.UltimateQa;
 import resources.pages.selector.LoginAutomationSelector;
 import resources.pages.selector.ScenarioPages;
 import resources.utils.DriverManager;
-
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
