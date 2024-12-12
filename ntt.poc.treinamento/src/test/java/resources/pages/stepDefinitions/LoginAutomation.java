@@ -47,7 +47,7 @@ public class LoginAutomation {
     @Then("valido que apareceu a mensagem de email incorreto {string}")
     public void valido_que_apareceu_a_mensagem_de_email_incorreto(String msgEmailInvalid) throws IOException {
         String  text = action.getText(LoginAutomationSelector.MSG_EMAIL_INVALID);
-        assertEquals(msgEmailInvalid , text);
+        assertEquals("teste",msgEmailInvalid , text);
         DriverManager.screenshotElement(LoginAutomationSelector.MSG_EMAIL_INVALID);
     }
 }
