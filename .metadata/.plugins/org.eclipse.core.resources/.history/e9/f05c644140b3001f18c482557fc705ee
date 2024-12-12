@@ -1,0 +1,27 @@
+package resources.pages.stepDefinitions;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+
+public class LoginAutomation {
+
+    @Given("que estou na pagina de login")
+    public void que_estou_na_pagina_de_login() {
+//        System.out.println("aaaatestesssss");
+        throw new RuntimeException();
+    }
+
+    @When("eu digito o email com formato incorreto")
+    public void eu_digito_o_email_com_formato_incorreto() {
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("deve aparecer a mensagem de email incorreto")
+    public void deve_aparecer_a_mensagem_de_email_incorreto() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+}

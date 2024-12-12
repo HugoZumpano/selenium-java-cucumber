@@ -1,0 +1,6 @@
+Feature: Login Automation
+
+  Scenario: Validar login sem sucesso
+    Given que estou na pagina de login
+    When eu digito o email com formato incorreto
+    Then deve aparecer a mensagem de email incorreto

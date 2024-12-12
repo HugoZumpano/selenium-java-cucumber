@@ -1,0 +1,15 @@
+package runners;
+
+
+//import org.junit.runner.RunWith;
+//import io.cucumber.junit.Cucumber;
+//
+//@RunWith(Cucumber.class)
+//public class Runner {
+//
+//}
+//@CucumberOptions(
+//        features = "src\\test\\java\\features\\feature.feature",
+//        glue = {"test.java.resources.pages.stepDefinitions"},
+//        plugin = {"pretty", "html:target/cucumber-report.html"},
+//        monochrome = true)

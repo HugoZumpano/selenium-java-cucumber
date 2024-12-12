@@ -1,0 +1,56 @@
+package resources.commons;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import org.apache.commons.io.FileUtils;
+
+
+public class ActionsCommon {
+    private final WebDriver driver;
+
+    public ActionsCommon(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void navigateToPage(String url) {
+        driver.get(url);
+    }
+
+    public void clickElement(By locator) throws IOException {
+        validateElement(locator);
+        driver.findElement(locator).click();
+        screenshotElement(locator);
+    }
+
+    public void inputElement(By locator, String msg) throws IOException {
+        validateElement(locator);
+        driver.findElement(locator).sendKeys(msg);
+        screenshotElement(locator);
+    }
+    public String getText(By locator){
+        return driver.findElement(locator).getText();
+    }
+
+    public void validateElement(By locator) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+        } catch (TimeoutException e) {
+            System.out.println("Elemento não encontrado " + locator.toString());
+        }
+    }
+    public void screenshotElement(By locator) throws IOException {
+        WebElement element = driver.findElement(locator);
+        String originalStyle = element.getAttribute("style");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.border='3px solid red'", element);
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String currentDir = System.getProperty("user.dir");
+        FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
+        js.executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
+    }
+}
