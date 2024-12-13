@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
 import resources.utils.DriverManager;
+import resources.utils.ScreenshotUtil;
 
 
 public class ActionsCommon {
@@ -21,14 +22,14 @@ public class ActionsCommon {
 
     public void clickElement(By locator) throws IOException {
         validateElement(locator);
-        DriverManager.screenshotElement(locator);
+        ScreenshotUtil.screenshotElement(locator);
         driver.findElement(locator).click();
     }
 
     public void inputElement(By locator, String msg) throws IOException {
         validateElement(locator);
         driver.findElement(locator).sendKeys(msg);
-        DriverManager.screenshotElement(locator);
+        ScreenshotUtil.screenshotElement(locator);
     }
     public String getText(By locator){
         return driver.findElement(locator).getText();

@@ -14,7 +14,7 @@ import io.cucumber.junit.CucumberOptions;
 						 RunnerTest.loginAutomation
 				 },
 				tags ="",
-				glue = {"resources.pages.stepDefinitions", "resources.pages.action"},
+				glue = "resources.pages",
 			    dryRun = false,
 				monochrome = false
 				 )

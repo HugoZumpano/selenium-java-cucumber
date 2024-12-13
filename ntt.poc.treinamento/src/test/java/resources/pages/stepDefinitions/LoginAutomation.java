@@ -8,6 +8,8 @@ import resources.pages.URLs.UltimateQa;
 import resources.pages.selector.LoginAutomationSelector;
 import resources.pages.selector.ScenarioPages;
 import resources.utils.DriverManager;
+import resources.utils.ScreenshotUtil;
+
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
@@ -47,6 +49,6 @@ public class LoginAutomation {
     public void valido_que_apareceu_a_mensagem_de_email_incorreto(String msgEmailInvalid) throws IOException {
         String  text = action.getText(LoginAutomationSelector.MSG_EMAIL_INVALID);
         assertEquals(msgEmailInvalid , text);
-        DriverManager.screenshotElement(LoginAutomationSelector.MSG_EMAIL_INVALID);
+        ScreenshotUtil.screenshotElement(LoginAutomationSelector.MSG_EMAIL_INVALID);
     }
 }
