@@ -41,7 +41,7 @@ public class ActionsCommon {
 
     protected void validateElement(By locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.elementToBeClickable(locator));
         } catch (TimeoutException e) {
             System.out.println("Elemento não encontrado " + locator.toString());
