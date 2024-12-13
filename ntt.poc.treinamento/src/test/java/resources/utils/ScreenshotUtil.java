@@ -21,6 +21,14 @@ public class ScreenshotUtil {
         discolorElement(locator);
     }
 
+    public static void screenshotPage() throws IOException {
+        String time = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss-SS").format(new Date());
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String currentDir = System.getProperty("user.dir");
+        FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + time + ".png"));
+    }
+
+
     public static void colorElement(By locator){
         WebElement element = driver.findElement(locator);
         JavascriptExecutor js = (JavascriptExecutor) driver;
