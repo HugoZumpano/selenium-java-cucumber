@@ -1,11 +1,12 @@
-package resources.commons;
+package resources.pages.action;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
-import resources.utils.DriverManager;
+
+import resources.utils.ScreenshotUtil;
 
 
 public class ActionsCommon {
@@ -19,24 +20,28 @@ public class ActionsCommon {
         driver.get(url);
     }
 
+    protected WebElement find(By locator) {
+        return driver.findElement(locator);
+    }
+
     public void clickElement(By locator) throws IOException {
         validateElement(locator);
-        DriverManager.screenshotElement(locator);
-        driver.findElement(locator).click();
+        ScreenshotUtil.screenshotElement(locator);
+        find(locator).click();
     }
 
-    public void inputElement(By locator, String msg) throws IOException {
+    public void inputText(By locator, String msg) throws IOException {
         validateElement(locator);
-        driver.findElement(locator).sendKeys(msg);
-        DriverManager.screenshotElement(locator);
+        find(locator).sendKeys(msg);
+        ScreenshotUtil.screenshotElement(locator);
     }
     public String getText(By locator){
-        return driver.findElement(locator).getText();
+        return find(locator).getText();
     }
 
-    public void validateElement(By locator) {
+    protected void validateElement(By locator) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.elementToBeClickable(locator));
         } catch (TimeoutException e) {
             System.out.println("Elemento não encontrado " + locator.toString());
