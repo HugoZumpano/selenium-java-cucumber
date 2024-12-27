@@ -43,6 +43,7 @@ public class ActionsCommon {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.elementToBeClickable(locator));
+
         } catch (TimeoutException e) {
             System.out.println("Elemento não encontrado " + locator.toString());
         }
